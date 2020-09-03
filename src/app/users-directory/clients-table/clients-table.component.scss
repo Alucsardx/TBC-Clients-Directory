@@ -1,0 +1,21 @@
+.table {
+  .add-client-button {
+    position: absolute;
+    top: 22px;
+    right: 36px;
+  }
+  &__header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .filters {
+      padding-left: 32px;
+    }
+  }
+  &__body {
+    table {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@import 'variables';
+
+.mat-header-row {
+  background-color: $color-background-dark;
+  .mat-header-cell {
+    color: $color-font-secondary;
+    font-size: 15px;
+  }
+}
+
+tbody {
+  .mat-row {
+    .mat-cell {
+      color: $color-font-primary;
+      font-size: 17px;
+    }
+    .action-icon {
+      color: $color-font-secondary;
+      padding: 3px;
+      cursor: pointer;
+      &:first-child {
+        margin-right: 4px;
+      }
+      &.remove {
+        &:hover {
+          color: $color-error;
+        }
+      }
+      &.edit {
+        &:hover {
+          color: $color-warning;
+        }
+      }
+    }
+  }
+}

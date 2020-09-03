@@ -1,0 +1,25 @@
+@import 'variables';
+
+.body {
+  .button-primary {
+    background-color: $color-primary;
+    font-size: 17px;
+  }
+  .button-with-icon {
+    border-radius: 8px;
+    height: 48px;
+    padding: 0px 12px 0px 36px;
+    .button-icon {
+      position: absolute;
+      top: 16px;
+      left: 12px;
+    }
+  }
+  .button-filter {
+    font-size: 17px;
+    border-radius: 4px;
+    border: solid 2px $color-border-light;
+    background-color: $color-background;
+    color: $color-font-secondary;
+  }
+}

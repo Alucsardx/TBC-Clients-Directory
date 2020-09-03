@@ -1,0 +1,9 @@
+<mat-toolbar class="header">Header</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedTopGap]="true">
+  </mat-sidenav>
+  <div class="body">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>
