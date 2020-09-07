@@ -27,9 +27,17 @@ export class AddClientModalComponent implements OnInit {
       lastName: fb.control('', Validators.required),
       gender: fb.control('', Validators.required),
       personalId: fb.control('', Validators.required),
-      legalAddress: fb.control('', Validators.required),
+      legalAddress: fb.group({
+        country: fb.control('', Validators.required),
+        city: fb.control('', Validators.required),
+        address: fb.control('', Validators.required)
+      }),
       mobileNumber: fb.control('', Validators.required),
-      actualAddress: fb.control('', Validators.required),
+      actualAddress: fb.group({
+        country: fb.control('', Validators.required),
+        city: fb.control('', Validators.required),
+        address: fb.control('', Validators.required)
+      }),
       pictureName: fb.control('', Validators.required),
       id: fb.control('')
     });

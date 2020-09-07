@@ -7,7 +7,7 @@
     flex-direction: column;
     .client-id {
       color: $color-font-secondary;
-      font-size: 28px;
+      font-size: 20px;
     }
     .section {
       display: inline-flex;
@@ -16,20 +16,35 @@
       padding: 16px 0px;
       .section-label {
         color: $color-font-secondary;
-        font-size: 20px;
-        padding: 16px 0px 0px 0px;
+        font-size: 16px;
+        padding: 8px 0px 0px 0px;
+      }
+      .input {
+        margin: 8px 16px 8px 0px;
+        width: 180px;
+        height: 50px;
       }
       .section-inputs {
         display: inline-flex;
         flex-wrap: wrap;
-        .input {
-          margin: 16px 48px 16px 0px;
-          width: 180px;
-          height: 50px;
-        }
       }
       .add-client-button {
         width: 200px;
+      }
+
+      .address-section {
+        display: inline-flex;
+        .address {
+          margin-right: 16px;
+          .address-header {
+            color: $color-font-secondary;
+            font-size: 16px;
+            padding: 8px 0px 0px 0px;
+          }
+          display: inline-flex;
+          flex-direction: column;
+          width: 200px;
+        }
       }
     }
   }

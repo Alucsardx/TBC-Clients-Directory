@@ -4,9 +4,9 @@ export enum Gender {
 }
 
 export interface Address {
-  Country: string;
-  City: string;
-  StreetAddress: string;
+  country: string;
+  city: string;
+  address: string;
 }
 
 export enum Currency {

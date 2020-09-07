@@ -35,11 +35,11 @@
             height: 80px;
             color: $color-font-secondary;
             .label {
-              font-size: 22px;
+              font-size: 20px;
               margin-bottom: 8px;
             }
             .value {
-              font-size: 25px;
+              font-size: 22px;
               font-weight: 500;
             }
           }
@@ -88,5 +88,22 @@
         }
       }
     }
+  }
+
+  .go-back {
+    position: absolute;
+    top: 36px;
+    display: flex;
+    align-items: center;
+    color: $color-font-secondary;
+    font-weight: normal;
+    .icon {
+      margin-right: 8px;
+    }
+    &:hover {
+      color: $color-primary;
+    }
+    cursor: pointer;
+    outline: none;
   }
 }

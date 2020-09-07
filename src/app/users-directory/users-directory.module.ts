@@ -38,6 +38,7 @@ import {
 import { FilterBarModule } from '../shared/filter-bar/filter-bar.component';
 import { EventBusService } from '../shared/services/event-bus.service';
 import { EllipsePipeModule } from '../shared/pipes/ellipse.pipe';
+import { AddressPipe } from './clients-inner-page/formatter.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EllipsePipeModule } from '../shared/pipes/ellipse.pipe';
     ClientsInnerPageComponent,
     AddClientModalComponent,
     AccountComponent,
-    AddAccountDialogComponent
+    AddAccountDialogComponent,
+    AddressPipe
   ],
   imports: [
     ReactiveFormsModule,

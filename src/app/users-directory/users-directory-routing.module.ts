@@ -13,6 +13,10 @@ const routes: Routes = [
     path: 'client-page/:id',
     component: ClientsInnerPageComponent,
     resolve: { client: ClientDataResolverService }
+  },
+  {
+    path: '**', // bonus: all routes not defined forward to /home
+    redirectTo: ''
   }
 ];
 

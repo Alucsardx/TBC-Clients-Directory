@@ -1,0 +1,9 @@
+@import 'variables';
+
+.go-to-clients {
+  cursor: pointer;
+  &:hover {
+    color: $color-primary;
+    outline: none;
+  }
+}

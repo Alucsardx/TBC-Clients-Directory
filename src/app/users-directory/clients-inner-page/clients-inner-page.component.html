@@ -1,4 +1,8 @@
 <div class="inner-page body">
+  <div class="go-back" routerLink="/clients">
+    <i class="fas fa-angle-double-left icon"></i>
+    <span>Back to client listing</span>
+  </div>
   <div class="general-information">
     <div class="customer-info">
       <div class="info-header">Client ID: {{ client.id }}</div>
@@ -30,8 +34,8 @@
         <div class="row">
           <div class="info big">
             <div class="label">Legal Address:</div>
-            <div class="value" [title]="client.legalAddress">
-              {{ client.legalAddress | ellipse: 20 }}
+            <div class="value" [title]="client.legalAddress | address">
+              {{ client.legalAddress | address | ellipse: 30 }}
             </div>
           </div>
           <div class="info big">
@@ -42,8 +46,8 @@
         <div class="row">
           <div class="info big">
             <div class="label">Actual Address:</div>
-            <div class="value" [title]="client.actualAddress">
-              {{ client.actualAddress | ellipse: 20 }}
+            <div class="value" [title]="client.actualAddress | address">
+              {{ client.actualAddress | address | ellipse: 30 }}
             </div>
           </div>
         </div>
