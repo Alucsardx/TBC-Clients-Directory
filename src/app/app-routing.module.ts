@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { GuardedComponent } from './guarded/guarded.component';
+import { GuardService } from './guarded/guarded.service';
 
 const routes: Routes = [
   {
@@ -20,6 +22,12 @@ const routes: Routes = [
         path: 'not-found',
         pathMatch: 'full',
         component: NotFoundComponent
+      },
+      {
+        path: 'guarded',
+        pathMatch: 'full',
+        canActivate: [GuardService],
+        component: GuardedComponent
       }
     ]
   }
