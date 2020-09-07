@@ -1,0 +1,28 @@
+.filter-dialog-body {
+  display: flex;
+  flex-direction: column;
+  form {
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      width: 440px;
+      .row {
+        display: inline-flex;
+        justify-content: space-around;
+        padding-bottom: 50px;
+        .input {
+          width: 180px;
+          height: 50px;
+        }
+      }
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        width: 100px;
+      }
+    }
+  }
+}

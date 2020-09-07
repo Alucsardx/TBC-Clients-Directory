@@ -1,0 +1,23 @@
+<div class="account-container body">
+  <div class="action-buttons">
+    <i class="fas fa-edit action-icon edit" (click)="editAccount()"></i>
+    <i class="fas fa-trash action-icon remove" (click)="removeAccount()"></i>
+  </div>
+  <div class="left-side half">
+    <div class="client-id">Client ID: {{ account.clientId }}</div>
+    <div class="account-number section">
+      <div class="label">Account Number:</div>
+      <div class="value">{{ account.id }}</div>
+    </div>
+    <div class="account-type section">
+      <div class="label">Type:</div>
+      <div class="value">{{ account.type }}</div>
+    </div>
+  </div>
+  <div class="right-side half">
+    <div class="account-currency section">
+      <div class="label">Currency:</div>
+      <div class="value">{{ account.currency }}</div>
+    </div>
+  </div>
+</div>

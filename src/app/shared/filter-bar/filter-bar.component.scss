@@ -1,0 +1,25 @@
+@import 'variables';
+
+.applied-filters {
+  padding: 14px 0px;
+  display: flex;
+  .filter {
+    color: $color-font-secondary;
+    background-color: $color-background;
+    margin-right: 8px;
+    padding: 2px 22px 2px 15px;
+    position: relative;
+    border-radius: 16px;
+    display: inline-flex;
+    .delimiter {
+      margin: 0px 8px;
+    }
+    .close-icon {
+      position: absolute;
+      right: 6px;
+      top: 5px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  }
+}

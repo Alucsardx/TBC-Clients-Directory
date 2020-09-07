@@ -1,0 +1,68 @@
+@import 'variables';
+
+.file-upload-container {
+  position: relative;
+  .custom-file-upload {
+    display: flex;
+    width: 225px;
+    height: 300px;
+    cursor: pointer;
+    background-color: $color-background-dark;
+    justify-content: center;
+    align-items: center;
+    .label {
+      display: inline-flex;
+      width: 150px;
+      height: 50px;
+      font-size: 17px;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-background;
+      font-weight: 500;
+      color: $color-font-secondary;
+    }
+  }
+  input[type='file'] {
+    display: none;
+  }
+
+  .status-text,
+  .error-message {
+    margin: 0;
+  }
+  .status-text {
+    padding: 0.25em;
+    font-family: 'OpenSans';
+    vertical-align: middle;
+    font-size: 9px;
+    color: #808d93;
+    position: absolute;
+  }
+  .error-message {
+    position: absolute;
+    bottom: -17px;
+    left: 69px;
+    font-size: 11px;
+  }
+
+  .image {
+    width: auto;
+    max-width: 120px;
+    height: 120px;
+    border-radius: 4px;
+    margin-top: 20px;
+    border: 1px solid #c6c6c6;
+  }
+  .inRow {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    max-width: 70px;
+    height: auto;
+    max-height: 120px;
+    border-radius: 4px;
+    border: 1px solid #c6c6c6;
+    left: 164px;
+    margin-top: 0px;
+  }
+}

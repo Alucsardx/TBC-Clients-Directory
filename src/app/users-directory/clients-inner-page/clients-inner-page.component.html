@@ -1,0 +1,107 @@
+<div class="inner-page body">
+  <div class="general-information">
+    <div class="customer-info">
+      <div class="info-header">Client ID: {{ client.id }}</div>
+      <div class="section">
+        <div class="section-header">Personal Information</div>
+        <div class="row">
+          <div class="info">
+            <div class="label">First Name:</div>
+            <div class="value">{{ client.firstName }}</div>
+          </div>
+          <div class="info">
+            <div class="label">Last Name:</div>
+            <div class="value">{{ client.lastName }}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="info">
+            <div class="label">Gender:</div>
+            <div class="value">{{ client.gender }}</div>
+          </div>
+          <div class="info">
+            <div class="label">Personal ID:</div>
+            <div class="value">{{ client.personalId }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-header">Contact Information:</div>
+        <div class="row">
+          <div class="info big">
+            <div class="label">Legal Address:</div>
+            <div class="value" [title]="client.legalAddress">
+              {{ client.legalAddress | ellipse: 20 }}
+            </div>
+          </div>
+          <div class="info big">
+            <div class="label">Mobile Number:</div>
+            <div class="value">{{ client.mobileNumber }}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="info big">
+            <div class="label">Actual Address:</div>
+            <div class="value" [title]="client.actualAddress">
+              {{ client.actualAddress | ellipse: 20 }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="customer-picture">
+      <div class="picture" [ngStyle]="getPictureStyle()"></div>
+    </div>
+  </div>
+  <div class="accounts-container">
+    <div class="accounts-header"></div>
+    <div class="accounts-tabs">
+      <mat-tab-group>
+        <mat-tab label="Active">
+          <div class="tab-content">
+            <app-account
+              *ngFor="let account of activeAccounts"
+              class="account-item"
+              [account]="account"
+              (editAccountEvent)="editAccount(account)"
+              (removeAccountEvent)="removeAccount(account)"
+            ></app-account>
+
+            <div class="add-account account-item">
+              <button
+                mat-raised-button
+                color="primary"
+                class="add-account-button"
+                (click)="addAccount()"
+              >
+                <i class="fas fa-plus plus-icon"></i>
+              </button>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Inactive">
+          <div class="tab-content">
+            <app-account
+              *ngFor="let account of closedAccounts"
+              (editAccountEvent)="editAccount(account)"
+              (removeAccountEvent)="removeAccount(account)"
+              class="account-item"
+              [account]="account"
+            ></app-account>
+
+            <div class="add-account account-item">
+              <button
+                mat-raised-button
+                color="primary"
+                class="add-account-button"
+                (click)="addAccount()"
+              >
+                <i class="fas fa-plus plus-icon"></i>
+              </button>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

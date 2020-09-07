@@ -1,0 +1,19 @@
+@import 'variables';
+
+.body {
+  .mat-tab-group {
+    .mat-tab-header {
+      .mat-tab-label {
+        .mat-tab-label-content {
+          color: $color-font-secondary;
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+      .mat-ink-bar {
+        background-color: $color-primary;
+        height: 4px;
+      }
+    }
+  }
+}

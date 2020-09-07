@@ -2,6 +2,7 @@ import { Gender, Address } from '../types/types';
 
 export class Client {
   id: number;
+  personalId: number;
   firstName: string;
   lastName: string;
   gender: Gender;
@@ -9,4 +10,5 @@ export class Client {
   legalAddress: Address;
   actualAddress: Address;
   pictureName: string;
+  accounts: Array<Account>;
 }

@@ -1,7 +1,7 @@
 import { AccountType, Currency, AccountStatus } from '../types/types';
 
 export class Account {
-  accountId: number;
+  id: number;
   clientId: number;
   type: AccountType;
   currency: Currency;

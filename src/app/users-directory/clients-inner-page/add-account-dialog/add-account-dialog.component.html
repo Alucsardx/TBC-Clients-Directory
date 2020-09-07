@@ -1,0 +1,45 @@
+<div class="add-account-body body">
+  <form [formGroup]="accountForm" (ngSubmit)="submit()" autocomplete="off">
+    <mat-form-field appearance="standard" class="input">
+      <mat-label>Account Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of accountTypes" [value]="type.value">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="input">
+      <mat-label>Currency</mat-label>
+      <mat-select formControlName="currency">
+        <mat-option
+          *ngFor="let currency of currencies"
+          [value]="currency.value"
+        >
+          {{ currency.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="input">
+      <mat-label>Account Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let status of statuses" [value]="status.value">
+          {{ status.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="add-client-button button-primary button-with-icon"
+      [class.button-with-icon]="dialogInputData.mode === addModalMode"
+      type="submit"
+    >
+      <i
+        class="fas fa-plus button-icon"
+        *ngIf="dialogInputData.mode === addModalMode"
+      ></i>
+      {{ dialogInputData.buttonLabel }}
+    </button>
+  </form>
+</div>

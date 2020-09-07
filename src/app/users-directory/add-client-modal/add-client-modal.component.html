@@ -1,0 +1,116 @@
+<div class="add-client-modal body">
+  <form [formGroup]="clientForm" (ngSubmit)="submit()" autocomplete="off">
+    <div class="modal-body">
+      <div class="information-form">
+        <div class="client-id">
+          {{ this.dialogInputData.title }}
+        </div>
+        <div class="personal-information section">
+          <div class="section-label">Personal Information</div>
+          <div class="section-inputs">
+            <mat-form-field class="text-input input">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                placeholder="Enter First Name"
+                formControlName="firstName"
+                [minlength]="2"
+                [maxlength]="50"
+                pattern="^([a-z,A-Z]+$)|(^([ა-ჰ]+)$)"
+              />
+            </mat-form-field>
+            <mat-form-field class="text-input input">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                placeholder="Enter Last Name"
+                formControlName="lastName"
+                [minlength]="2"
+                [maxlength]="50"
+                pattern="^([a-z,A-Z]+$)|(^([ა-ჰ])+$)"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="standard" class="input">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option
+                  *ngFor="let gender of genders"
+                  [value]="gender.value"
+                >
+                  {{ gender.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="text-input input">
+              <mat-label>Personal ID</mat-label>
+              <input
+                matInput
+                placeholder="Enter Personal ID"
+                formControlName="personalId"
+                [minlength]="11"
+                [maxlength]="11"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="contact-information section">
+          <div class="section-label">Contact Information</div>
+          <div class="section-inputs">
+            <mat-form-field class="text-input input">
+              <mat-label>Legal Address</mat-label>
+              <input
+                matInput
+                placeholder="Enter Address"
+                formControlName="legalAddress"
+              />
+            </mat-form-field>
+            <mat-form-field class="text-input input">
+              <mat-label>Mobile Number</mat-label>
+              <input
+                matInput
+                placeholder="Enter Mobile Number"
+                formControlName="mobileNumber"
+                [minlength]="9"
+                [maxlength]="9"
+                pattern="^5\d+$"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="text-input input">
+              <mat-label>Actual Address</mat-label>
+              <input
+                matInput
+                placeholder="Enter Address"
+                formControlName="actualAddress"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="picture-form">
+        <app-image-upload
+          (fileSelected)="onFileSelected($event)"
+          [imageInBase64]="clientForm.value.pictureName"
+        ></app-image-upload>
+      </div>
+    </div>
+    <div class="submit">
+      <button
+        mat-raised-button
+        color="primary"
+        class="add-client-button button-primary button-with-icon"
+        [class.button-with-icon]="dialogInputData.mode === addModalMode"
+        type="submit"
+      >
+        <i
+          class="fas fa-plus button-icon"
+          *ngIf="dialogInputData.mode === addModalMode"
+        ></i>
+        {{ dialogInputData.buttonLabel }}
+      </button>
+    </div>
+  </form>
+</div>

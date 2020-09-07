@@ -1,0 +1,61 @@
+<div class="filter-dialog-body body">
+  <form class="filter-form" [formGroup]="filterForm" (ngSubmit)="submit()">
+    <div class="inputs">
+      <div class="row">
+        <mat-form-field class="text-input input">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="Enter First Name"
+            formControlName="firstName"
+            [minlength]="2"
+            [maxlength]="50"
+            pattern="^([a-z,A-Z]+$)|(^([ა-ჰ]+)$)"
+          />
+        </mat-form-field>
+        <mat-form-field class="text-input input">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Enter Last Name"
+            formControlName="lastName"
+            [minlength]="2"
+            [maxlength]="50"
+            pattern="^([a-z,A-Z]+$)|(^([ა-ჰ])+$)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="standard" class="input">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender.value">
+              {{ gender.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="text-input input">
+          <mat-label>Personal ID</mat-label>
+          <input
+            matInput
+            placeholder="Enter Personal ID"
+            formControlName="personalId"
+            [minlength]="11"
+            [maxlength]="11"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="button">
+      <button
+        mat-raised-button
+        color="primary"
+        class="add-client-button button-primary"
+        type="submit"
+      >
+        Filter
+      </button>
+    </div>
+  </form>
+</div>

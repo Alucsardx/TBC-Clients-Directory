@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="91.16" height="91.028" viewBox="0 0 91.16 91.028">
+    <defs>
+        <style>
+            .cls-1{fill:#e0e9ff}.cls-2{clip-path:url(#clip-path)}.cls-3{fill:#f82929}.cls-4{fill:#fff}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Path_101" d="M45.987 91.528a44.275 44.275 0 0 1-35.923-17.787A45.418 45.418 0 0 1 2.042 34.33 42.154 42.154 0 0 1 18.783 9.219 46.02 46.02 0 0 1 45.987.5a46.02 46.02 0 0 1 27.2 8.719c8.37 5.929 14.3 15 17.09 25.809a45.876 45.876 0 0 1-8.022 39.411 47.4 47.4 0 0 1-36.268 17.089z" class="cls-1" data-name="Path 101" transform="translate(1.286 1.244)"/>
+        </clipPath>
+    </defs>
+    <g id="note_state" transform="translate(-1.867 -1.744)">
+        <g id="Mask_Group_16" class="cls-2" data-name="Mask Group 16">
+            <g id="warning_state" transform="translate(8.151 8.023)">
+                <path id="Path_48" d="M1.158 29.534c10.134-39.379 66.018-39.379 76.153 0a38.983 38.983 0 0 1-28.376 47.777 36.7 36.7 0 0 1-9.845 1.158A39.111 39.111 0 0 1 0 39.379a53.885 53.885 0 0 1 1.158-9.845z" class="cls-3"/>
+                <path id="Path_103" d="M47.276 43.223L57.7 32.8a2.866 2.866 0 0 0-4.054-4.054L43.223 39.169 32.8 28.745a2.866 2.866 0 0 0-4.055 4.055l10.424 10.423-10.424 10.424a2.8 2.8 0 0 0 0 4.054 2.8 2.8 0 0 0 4.054 0l10.424-10.425L53.647 57.7a2.8 2.8 0 0 0 4.054 0 2.8 2.8 0 0 0 0-4.054z" class="cls-4" data-name="Path 103" transform="translate(-3.843 -3.843)"/>
+            </g>
+        </g>
+    </g>
+</svg>

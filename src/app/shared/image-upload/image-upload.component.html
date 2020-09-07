@@ -1,0 +1,29 @@
+<div class="file-upload-container">
+  <div class="file">
+    <label
+      for="file-upload"
+      class="custom-file-upload"
+      [ngStyle]="getImageStyle()"
+    >
+      <div class="label" *ngIf="!imageInBase64">Upload a photo</div>
+    </label>
+    <input
+      id="file-upload"
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="'image/x-png,image/jpeg'"
+    />
+  </div>
+  <!-- <div
+    *ngIf="actualUrl"
+    class="image animated fadeIn faster"
+    [class.inRow]="imageInRow"
+    [style.background-image]="'url(' + actualUrl + ')'"
+    [style.background-size]="'contain'"
+    [style.background-repeat]="'no-repeat'"
+    [title]="fileName"
+    [style.max-width.px]="imageMaxWidth"
+  ></div> -->
+
+  <span class="error-message" *ngIf="error.error">{{ error.message }}</span>
+</div>

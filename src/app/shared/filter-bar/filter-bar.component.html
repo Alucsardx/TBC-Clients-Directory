@@ -1,0 +1,17 @@
+<div class="applied-filters">
+  <ng-container *ngFor="let item of filters | keyvalue">
+    <div class="filter" *ngIf="item.value">
+      <i
+        class="far fa-times-circle close-icon"
+        (click)="removeFilter(item)"
+      ></i>
+      <div class="filter-name">
+        {{ item.key | filter }}
+      </div>
+      <div class="delimiter">:</div>
+      <div class="filter-value">
+        {{ item.value | ellipse: 10 }}
+      </div>
+    </div>
+  </ng-container>
+</div>

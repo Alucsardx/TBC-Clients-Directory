@@ -1,13 +1,34 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { AddClientModalComponent } from '../add-client-modal/add-client-modal.component';
+import { ConfirmActionDialogComponent } from 'src/app/shared/confirm-action-dialog/confirm-action-dialog.component';
+import { FilterDialogComponent } from 'src/app/shared/filter-dialog/filter-dialog.component';
+import {
+  Filter,
+  ClientResponse,
+  TableData
+} from 'src/app/models/specific.models';
+import { AddModalMode } from 'src/app/types/types';
+import { Client } from 'src/app/models/client.model';
+import { ClientService } from './clients.service';
+import { MatSort } from '@angular/material/sort';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Utils } from 'src/app/utils/utils';
+import { EventBusService } from 'src/app/shared/services/event-bus.service';
 
 @Component({
   selector: 'app-clients-table',
   templateUrl: './clients-table.component.html',
   styleUrls: ['./clients-table.component.scss']
 })
-export class ClientsTableComponent implements OnInit, AfterViewInit {
+export class ClientsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns: string[] = [
     'action',
     'id',
@@ -16,165 +37,134 @@ export class ClientsTableComponent implements OnInit, AfterViewInit {
     'personalId',
     'mobileNumber'
   ];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource: Array<Client> = [];
+  appliedFilters: Filter;
+  resultsLength = 1000;
+
+  tableData: TableData = {
+    page: 0,
+    pageSize: 10,
+    sort: 'id',
+    sortDirection: 'asc'
+  };
+  route;
+  eventBusSub;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor() {}
+  constructor(
+    public dialog: MatDialog,
+    private clientService: ClientService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private eventBus: EventBusService
+  ) {}
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  ngAfterViewInit() {}
+  ngOnInit() {
+    const tempTableData = JSON.parse(
+      Utils.getItemFromLocalStorage('tableData')
+    );
+    if (tempTableData) {
+      this.tableData = tempTableData;
+    }
+    this.sort.sortChange.subscribe(() => this.getServerData());
+    this.sort.active = this.tableData.sort;
+    this.sort.direction = this.tableData.sortDirection as any;
+    this.paginator.pageIndex = this.tableData.page;
+    this.paginator.pageSize = this.tableData.pageSize;
+
+    this.getServerData();
+
+    this.eventBusSub = this.eventBus
+      .on('filterApplied')
+      .subscribe(() => this.getServerData());
   }
-  ngOnInit() {}
-}
 
-export interface PeriodicElement {
-  firstName: string;
-  id: number;
-  lastName: string;
-  personalId: number;
-  mobileNumber: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    id: 1,
-    firstName: 'Hydrogen',
-    lastName: 'Test',
-    personalId: 1.0079,
-    mobileNumber: 'H'
-  },
-  {
-    id: 2,
-    firstName: 'Helium',
-    lastName: 'Test',
-    personalId: 4.0026,
-    mobileNumber: 'He'
-  },
-  {
-    id: 3,
-    firstName: 'Lithium',
-    lastName: 'Test',
-    personalId: 6.941,
-    mobileNumber: 'Li'
-  },
-  {
-    id: 4,
-    firstName: 'Beryllium',
-    lastName: 'Test',
-    personalId: 9.0122,
-    mobileNumber: 'Be'
-  },
-  {
-    id: 5,
-    firstName: 'Boron',
-    lastName: 'Test',
-    personalId: 10.811,
-    mobileNumber: 'B'
-  },
-  {
-    id: 6,
-    firstName: 'Carbon',
-    lastName: 'Test',
-    personalId: 12.0107,
-    mobileNumber: 'C'
-  },
-  {
-    id: 7,
-    firstName: 'Nitrogen',
-    lastName: 'Test',
-    personalId: 14.0067,
-    mobileNumber: 'N'
-  },
-  {
-    id: 8,
-    firstName: 'Oxygen',
-    lastName: 'Test',
-    personalId: 15.9994,
-    mobileNumber: 'O'
-  },
-  {
-    id: 9,
-    firstName: 'Fluorine',
-    lastName: 'Test',
-    personalId: 18.9984,
-    mobileNumber: 'F'
-  },
-  {
-    id: 10,
-    firstName: 'Neon',
-    lastName: 'Test',
-    personalId: 20.1797,
-    mobileNumber: 'Ne'
-  },
-  {
-    id: 11,
-    firstName: 'Sodium',
-    lastName: 'Test',
-    personalId: 22.9897,
-    mobileNumber: 'Na'
-  },
-  {
-    id: 12,
-    firstName: 'Magnesium',
-    lastName: 'Test',
-    personalId: 24.305,
-    mobileNumber: 'Mg'
-  },
-  {
-    id: 13,
-    firstName: 'Aluminum',
-    lastName: 'Test',
-    personalId: 26.9815,
-    mobileNumber: 'Al'
-  },
-  {
-    id: 14,
-    firstName: 'Silicon',
-    lastName: 'Test',
-    personalId: 28.0855,
-    mobileNumber: 'Si'
-  },
-  {
-    id: 15,
-    firstName: 'Phosphorus',
-    lastName: 'Test',
-    personalId: 30.9738,
-    mobileNumber: 'P'
-  },
-  {
-    id: 16,
-    firstName: 'Sulfur',
-    lastName: 'Test',
-    personalId: 32.065,
-    mobileNumber: 'S'
-  },
-  {
-    id: 17,
-    firstName: 'Chlorine',
-    lastName: 'Test',
-    personalId: 35.453,
-    mobileNumber: 'Cl'
-  },
-  {
-    id: 18,
-    firstName: 'Argon',
-    lastName: 'Test',
-    personalId: 39.948,
-    mobileNumber: 'Ar'
-  },
-  {
-    id: 19,
-    firstName: 'Potassium',
-    lastName: 'Test',
-    personalId: 39.0983,
-    mobileNumber: 'K'
-  },
-  {
-    id: 20,
-    firstName: 'Calcium',
-    lastName: 'Test',
-    personalId: 40.078,
-    mobileNumber: 'Ca'
+  onRowClick(row: Client) {
+    this.router.navigate(['client-page', row.id], {
+      relativeTo: this.activatedRoute
+    });
   }
-];
+  addClient() {
+    const dialogRef = this.dialog.open(AddClientModalComponent, {
+      data: {
+        mode: AddModalMode.Add,
+        data: null,
+        title: 'Add New Client',
+        buttonLabel: 'Add New Client'
+      }
+    });
+    dialogRef.afterClosed().subscribe((result: Client) => {
+      if (result) {
+        this.clientService.addNewClient(result).subscribe(res => {
+          this.getServerData();
+        });
+      }
+    });
+  }
+  editClient(client: Client, event) {
+    event.stopPropagation();
+    const dialogRef = this.dialog.open(AddClientModalComponent, {
+      data: {
+        mode: AddModalMode.Edit,
+        data: client,
+        title: 'Edit Client',
+        buttonLabel: 'Save'
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.clientService.updateClient(result).subscribe(data => {
+          this.getServerData();
+        });
+      }
+    });
+  }
+  removeClient(client: Client, event) {
+    event.stopPropagation();
+    const dialogRef = this.dialog.open(ConfirmActionDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.clientService.removeClient(client).subscribe(data => {
+          this.getServerData();
+        });
+      }
+    });
+  }
+
+  filter() {
+    const dialogRef = this.dialog.open(FilterDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+      }
+    });
+  }
+
+  getServerData() {
+    this.tableData = {
+      page: this.paginator.pageIndex,
+      pageSize: this.paginator.pageSize,
+      sort: this.sort.active,
+      sortDirection: this.sort.direction
+    };
+    Utils.setItemToLocalStorage('tableData', JSON.stringify(this.tableData));
+    this.clientService
+      .getClients(
+        this.sort.active,
+        this.sort.direction,
+        this.paginator.pageIndex,
+        this.paginator.pageSize
+      )
+      .subscribe((data: ClientResponse) => {
+        this.dataSource = data.clients;
+        this.resultsLength = data.count;
+      });
+  }
+
+  ngOnDestroy() {
+    this.eventBusSub.unsubscribe();
+  }
+}

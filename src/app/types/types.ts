@@ -1,6 +1,6 @@
 export enum Gender {
-  Male = 'მდედრობითი',
-  Female = 'მამრობითი'
+  Male = 'Male',
+  Female = 'Female'
 }
 
 export interface Address {
@@ -22,7 +22,19 @@ export enum AccountType {
   Accumulative = 'დაგროვებითი'
 }
 
+export enum AddModalMode {
+  Add,
+  Edit
+}
+
 export enum AccountStatus {
   Active = 'აქტიური',
   Closed = 'დახურული'
+}
+
+export enum FilterTypes {
+  firstName = 'First Name',
+  lastName = 'Last Name',
+  gender = 'Gender',
+  personalId = 'Personal ID'
 }

@@ -1,0 +1,30 @@
+@import 'variables';
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 300px;
+  align-items: center;
+  justify-content: space-between;
+  .warning-icon {
+    width: 150px;
+    height: 150px;
+    background-image: url('/assets/icons/warning_state.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .warning-message {
+    color: $color-font-primary;
+    font-size: 24px;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      margin: 0px 8px;
+      height: 40px;
+    }
+  }
+}

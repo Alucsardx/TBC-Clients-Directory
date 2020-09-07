@@ -32,5 +32,10 @@ tbody {
         }
       }
     }
+
+    &:hover {
+      background-color: $color-background-dark;
+    }
+    cursor: pointer;
   }
 }
